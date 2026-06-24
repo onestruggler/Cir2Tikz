@@ -340,7 +340,7 @@ draw_gates_yshift_lm :: Float -> Float -> Circuit -> (String , [(WireType , (Str
 draw_gates_yshift_lm yshift lm cir@(Cir gl sp) = (concat fdgs , nub (concat sdgs))
   where
     gn = assign_nodes_x_to_gates_lm lm cir
-    prefix = if lm == 0 then "" else "lm" ++ show (round lm)
+    prefix = "n" ++ show (round lm :: Int) ++ "y" ++ show (round yshift :: Int)
     gnn = zipWith (\ a (b , c) -> (b , a , c)) (map (prefix++) $ map show [0..length gl]) gn
     dgs = map (draw_gate_yshift yshift) gnn
     fdgs = map fst dgs
@@ -380,7 +380,7 @@ draw_invisible_nodes_yshift_lm yshift lm cir@(Cir gl sp) = (str , lrs')
     ws' = nub $ sort $ wires_of_cir cir
     ws = [minimum ws' .. maximum ws']
     wd = width_of_cir cir
-    prefix = if lm == 0 then "" else "lm"
+    prefix = "lm" ++ show (round lm :: Int)
     lnns = (map (prefix++) $ map (\ x -> "el"++ x ++ show (round yshift)) $ map show ws)
     rnns = (map (prefix++) $ map (\ x -> "er"++ x ++ show (round yshift)) $ map show ws)
     lcoords :: [(Float, Float)]
