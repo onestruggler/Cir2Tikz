@@ -558,7 +558,7 @@ tikz_of_pcir_xy xshift yshift (h:t) = dh ++ draw_connective ++ ihc
     (x' , y') = case dir of
       Right -> (xshift + width_of_cir hc + 2, yshift)
       Left -> (xshift - (width_of_cir hc + 2), yshift)
-      Down -> (xshift , yshift - (height_of_cir hc + 2))
+      Down -> (xshift , yshift - (height_of_cir hc + height_between_two_vertical_arranged_circuits))
       Up -> (xshift , yshift + (height_of_cir hc + 2))
       RU -> (xshift + (width_of_cir hc + 2), yshift + (height_of_cir hc + 2))
       RD -> (xshift + (width_of_cir hc + 2), yshift - (height_of_cir hc + 2))
@@ -571,7 +571,7 @@ tikz_of_pcir_xy xshift yshift (h:t) = dh ++ draw_connective ++ ihc
     draw_connective = case dir of
       Right -> printf "\\node [style=none] (equiv) at (%f, %f) {$%s$};\n" (x' - 1) (yshift + hh) si
       Left -> printf "\\node [style=none,rotate=180] (equiv) at (%f, %f) {$%s$};\n" (x' + 1) (yshift + hh) si
-      Down -> printf "\\node [style=none,rotate=-90] (equiv) at (%f, %f) {$%s$};\n" (xshift + hw) (y' + 1) si
+      Down -> printf "\\node [style=none,rotate=-90] (equiv) at (%f, %f) {$%s$};\n" (xshift + hw) (yshift - height_between_two_vertical_arranged_circuits / 2) si
       Up -> printf "\\node [style=none,rotate=90] (equiv) at (%f, %f) {$%s$};\n" (xshift + hw) (y' - 1) si
       LU -> printf "\\node [style=none,rotate=135] (equiv) at (%f, %f) {$%s$};\n" (x' + 1) (y' - 1) si
       LD -> printf "\\node [style=none,rotate=-135] (equiv) at (%f, %f) {$%s$};\n" (x' + 1) (y' + 1) si
