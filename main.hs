@@ -32,11 +32,11 @@ eg_pcirs =
   ]
 
 
-main = do
+main_cir = do
     putStrLn $ tikz_of_cir $ cir_trans $ your_cir
     
-main_rels = do
-    putStrLn $ tikz_of_rels $ map rel_trans $ eg_rels
+main = do
+    putStrLn $ tikz_of_rels $ map rel_trans $ map snd $ box_rels_CZBt
     
 main_pcir = do
     putStrLn $ tikz_of_pcir $ map pcir_trans $ eg_pcirs  

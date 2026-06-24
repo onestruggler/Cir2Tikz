@@ -259,11 +259,13 @@ draw_gate_yshift yshift (Gate Ex w str, i , x) = (
   printf "\\node [style=none] (%stl) at (%f, %f) {$%s$};\n"i (x - 0.75) ((y + yshift) + 2) str ++
   printf "\\node [style=none] (%sbl) at (%f, %f) {$%s$};\n"i (x - 0.75) (y + yshift) str ++
   printf "\\node [style=none] (%sbr) at (%f, %f) {$%s$};\n"i (x + 0.75) (y + yshift) str ++
-  printf "\\node [style=none] (%str) at (%f, %f) {$%s$};\n"i (x + 0.75) ((y + yshift) + 2) str ,
+  printf "\\node [style=none] (%str) at (%f, %f) {$%s$};\n"i (x + 0.75) ((y + yshift) + 2) str ++
+  printf "\\node [style=none] (%sftl) at (%f, %f) {};\n"i (x - 0.75) ((y + yshift) + 2 + 0.15) ++
+  printf "\\node [style=none] (%sfbr) at (%f, %f) {};\n"i (x + 0.75) ((y + yshift) - 0.15) ,
   wps)
   where
     wps =
-      (Erase , (i++"tl" , i ++ "br")) :
+      (Erase , (i++"ftl" , i ++ "fbr")) :
       (Black , (i++"bl" , i ++ "tr")) :
       (Black , (i++"tl" , i ++ "br")) :
       []
@@ -310,11 +312,13 @@ draw_gate (Gate Ex w str, i , x) = (
   printf "\\node [style=none] (%stl) at (%f, %f) {$%s$};\n"i (x - 0.75) (y + 2) str ++
   printf "\\node [style=none] (%sbl) at (%f, %f) {$%s$};\n"i (x - 0.75) y str ++
   printf "\\node [style=none] (%sbr) at (%f, %f) {$%s$};\n"i (x + 0.75) y str ++
-  printf "\\node [style=none] (%str) at (%f, %f) {$%s$};\n"i (x + 0.75) (y + 2) str ,
+  printf "\\node [style=none] (%str) at (%f, %f) {$%s$};\n"i (x + 0.75) (y + 2) str ++
+  printf "\\node [style=none] (%sftl) at (%f, %f) {};\n"i (x - 0.75) (y + 2 + 0.15) ++
+  printf "\\node [style=none] (%sfbr) at (%f, %f) {};\n"i (x + 0.75) (y - 0.15) ,
   wps)
   where
     wps =
-      (Erase , (i++"tl" , i ++ "br")) :
+      (Erase , (i++"ftl" , i ++ "fbr")) :
       (Black , (i++"bl" , i ++ "tr")) :
       (Black , (i++"tl" , i ++ "br")) :
       []
