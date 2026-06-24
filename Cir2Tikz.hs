@@ -263,8 +263,7 @@ draw_gate_yshift yshift (Gate Ex w str, i , x) = (
   wps)
   where
     wps =
-      (Erase , (i++"tl" , i ++ "tr")) :
-      (Erase , (i++"bl" , i ++ "br")) :
+      (Erase , (i++"tl" , i ++ "br")) :
       (Black , (i++"bl" , i ++ "tr")) :
       (Black , (i++"tl" , i ++ "br")) :
       []
@@ -315,8 +314,7 @@ draw_gate (Gate Ex w str, i , x) = (
   wps)
   where
     wps =
-      (Erase , (i++"tl" , i ++ "tr")) :
-      (Erase , (i++"bl" , i ++ "br")) :
+      (Erase , (i++"tl" , i ++ "br")) :
       (Black , (i++"bl" , i ++ "tr")) :
       (Black , (i++"tl" , i ++ "br")) :
       []
@@ -411,7 +409,7 @@ draw_lines [] = ""
 draw_lines ((QBit, (l,r)):t) = "\\draw (" ++  l ++ ".center) to (" ++  r ++ ".center);\n" ++ draw_lines t
 draw_lines ((Control, (l,r)):t) = "\\draw (" ++  l ++ ".center) to (" ++  r ++ ".center);\n" ++ draw_lines t
 draw_lines ((White, (l,r)):t) = "\\draw [color=white] (" ++  l ++ ".center) to (" ++  r ++ ".center);\n" ++ draw_lines t
-draw_lines ((Erase, (l,r)):t) = "\\draw [color=white] (" ++  l ++ ".center) to (" ++  r ++ ".center);\n" ++ draw_lines t
+draw_lines ((Erase, (l,r)):t) = "\\fill [white] (" ++ l ++ ".center) rectangle (" ++ r ++ ".center);\n" ++ draw_lines t
 draw_lines ((Black, (l,r)):t) = "\\draw (" ++  l ++ ".center) to (" ++  r ++ ".center);\n" ++ draw_lines t
 
 draw_cir_spec :: Circuit -> String
